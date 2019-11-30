@@ -56,40 +56,33 @@
     <div style="height: 500px !important; overflow-y:scroll !important">
       <div *ngIf="currentItem">
         <form>
-  
-            <div *ngFor = "let k of currentItemKeys; let ind = index;">
-            <div *ngFor="let x of (currentItemCloneFields | keyvalue); let i = index; trackBy:trackByFn">  
-   
-                <!-- ngIf="k == x.key" -->
-     <div *ngIf="k == x.key && k != entKeyField" class="form-group">
 
-              <label for="name">{{k}}</label>
-              <input type="text" class="form-control" id="{{k}}" required [(ngModel)]="currentItem[x.key]" name={{k}}>
+          <div *ngFor="let k of currentItemKeys; let ind = index;">
+            <div *ngFor="let x of (currentItemCloneFields | keyvalue); let i = index; trackBy:trackByFn">
+
+              <!-- ngIf="k == x.key" -->
+              <div *ngIf="k == x.key && k != entKeyField" class="form-group">
+
+                <label for="name">{{k}}</label>
+                <input type="text" class="form-control" id="{{k}}" required [(ngModel)]="currentItem[x.key]" name={{k}}>
+              </div>
+
+
             </div>
-
-
-      </div>
-    </div>
+          </div>
         </form>
         <!-- {{ currentItem | json }} -->
       </div>
 
     </div>
-    <br> 
-    <div class="row">
-       
-        <div class="col-md-5">
-          <button type="button" (click)="doSave(this.entity,currentItem.id)" class="btn btn-success">Save</button>
-          &nbsp; <button type="button" (click)="doAdd()" class="btn btn-info">Add</button>
-          &nbsp;<button type="button" class="btn btn-danger" (click)="doDelete(this.currentItemIndex)" >Delete</button>
+    <br>
 
-        </div>
-
-        <div class="col-md-7">
-        </div>
-
-      </div>
-
+    <div class="container">
+      <button type="button" class="btn btn-success" (click)="doSave(this.entity,currentItem.id)" >Save</button>&nbsp;
+      <button type="button" class="btn btn-info" (click)="doAdd()" >Add</button>&nbsp;
+      <button type="button" class="btn btn-danger" (click)="doDelete(this.currentItemIndex)">Delete</button>&nbsp;
+      <!--<button type="button" class="btn btn-link">Link</button>-->
+    </div>
   </div>
 </div>
 
